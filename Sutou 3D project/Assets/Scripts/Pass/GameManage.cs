@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum State
 {
@@ -12,8 +13,8 @@ public class GameManage : MonoBehaviour
 {
     private State state;
     private Vector3 dir;
-    private Transform ropefather;
-    private Transform ropeCode;
+    public Image rope;
+    public Image handler;
     private float length;
 
     public State GetState
@@ -25,8 +26,7 @@ public class GameManage : MonoBehaviour
     {
         state = State.Rock;
         dir = Vector3.back;
-        ropefather = transform.GetChild(0);
-        ropeCode = ropefather.GetChild(0);
+       
         length = 1;
     }
 
@@ -40,34 +40,33 @@ public class GameManage : MonoBehaviour
         }
         else if (state == State.Shorten)
         {
-            Stretch();
+            Shorten();
         }
         else if (state == State.Stretch)
         {
-            Shorten();
+            Stretch();
         }
     }
     private void Rock()
     {
-        if (ropefather.localRotation.z <= -0.5f)
+        if (rope.rectTransform.localRotation.z <= -0.5f)
             dir = Vector3.forward;
-        else if (ropefather.localRotation.z >= 0.5f)
+        else if (rope.rectTransform.localRotation.z >= 0.5f)
             dir = Vector3.back;
-        ropefather.Rotate(dir * 60 * Time.deltaTime);
+        rope.rectTransform.Rotate(dir * 60 * Time.deltaTime);
     }
     private void Stretch()
     {
-       if (length >= 7.5f) { state = State.Shorten;return; }
+     if (length >= 4f) { state = State.Shorten;return; }
         length += Time.deltaTime ;
-        ropefather.localScale = new Vector3(ropefather.localScale.x,length,ropefather.localScale.z);
-        ropeCode.localScale = new Vector3(ropeCode.localScale.x, 1 / length, ropeCode.localScale.z);
+        rope.rectTransform.localScale = new Vector3(rope.rectTransform.localScale.x,length,rope.rectTransform.localScale.z);
+        handler.rectTransform.localScale = new Vector3(handler.rectTransform.localScale.x, 1 / length, handler.rectTransform.localScale.z);
     }
     private void Shorten()
     {
-       if (length <= 1) { length = 1; state = State.Rock; return; }
+       if (length <= 1) { length = 1; state = State.Rock; handler.GetComponent<Collider2D>().enabled = true; return; }
         length -= Time.deltaTime ;
-        ropefather.localScale = new Vector3(ropefather.localScale.x, length, ropefather.localScale.z);
-        ropeCode.localScale = new Vector3(ropeCode.localScale.x, 1 / length, ropeCode.localScale.z);
+        rope.rectTransform.localScale = new Vector3(rope.rectTransform.localScale.x, length, rope.rectTransform.localScale.z);
+        handler.rectTransform.localScale = new Vector3(handler.rectTransform.localScale.x, 1 / length, handler.rectTransform.localScale.z);
     }
-
 }
