@@ -62,9 +62,19 @@ public class GameManage : MonoBehaviour
         rope.rectTransform.localScale = new Vector3(rope.rectTransform.localScale.x,length,rope.rectTransform.localScale.z);
         handler.rectTransform.localScale = new Vector3(handler.rectTransform.localScale.x, 1 / length, handler.rectTransform.localScale.z);
     }
-    private void Shorten()
+    public void Shorten()
     {
-       if (length <= 1) { length = 1; state = State.Rock; handler.GetComponent<Collider2D>().enabled = true; return; }
+       if (length <= 1) { 
+            length = 1; 
+            state = State.Rock; 
+            handler.GetComponent<Collider2D>().enabled = true; 
+            // if no child
+            if(handler.transform.childCount > 0) {
+                Transform firstChildTransform = handler.transform.GetChild(0);
+                Destroy(firstChildTransform.gameObject);
+            }
+            return; 
+        }
         length -= Time.deltaTime ;
         rope.rectTransform.localScale = new Vector3(rope.rectTransform.localScale.x, length, rope.rectTransform.localScale.z);
         handler.rectTransform.localScale = new Vector3(handler.rectTransform.localScale.x, 1 / length, handler.rectTransform.localScale.z);
