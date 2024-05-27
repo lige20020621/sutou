@@ -7,7 +7,7 @@ public enum State
 {
     Rock,
     Stretch,
-    Shorten
+    Shorten,
 }
 public class GameManage : MonoBehaviour
 {
@@ -15,7 +15,11 @@ public class GameManage : MonoBehaviour
     private Vector3 dir;
     public Image rope;
     public Image handler;
+    public Image passImage;
+    public Image justRockImage;
+    public List<Transform> studentImages;
     private float length;
+    private bool isRotating = true;
 
     public State GetState
     {
@@ -35,7 +39,7 @@ public class GameManage : MonoBehaviour
     {
         if (state == State.Rock)
         {
-            Rock();
+            if(isRotating) Rock();
             if (Input.GetMouseButtonDown(0)) state = State.Stretch;
         }
         else if (state == State.Shorten)
@@ -71,12 +75,47 @@ public class GameManage : MonoBehaviour
             // if no child
             if(handler.transform.childCount > 0) {
                 Transform firstChildTransform = handler.transform.GetChild(0);
+                if(firstChildTransform.CompareTag("student")) {
+                    Debug.Log("it is a rock");
+                    studentImages.Remove(firstChildTransform);
+                }
                 Destroy(firstChildTransform.gameObject);
+                if(!IsPassImageEnabled())
+                {
+                    passImage.enabled = true;
+                }
+                if(!IsRockImageEnabled())
+                {
+                    justRockImage.enabled = true;
+                }
+            }
+            if(studentImages.Count == 0)
+            {
+                isRotating = false;
+                Debug.Log("no student");
             }
             return; 
         }
         length -= Time.deltaTime ;
         rope.rectTransform.localScale = new Vector3(rope.rectTransform.localScale.x, length, rope.rectTransform.localScale.z);
         handler.rectTransform.localScale = new Vector3(handler.rectTransform.localScale.x, 1 / length, handler.rectTransform.localScale.z);
+    }
+
+    bool IsPassImageEnabled()
+    {
+        if (passImage != null)
+        {
+            return passImage.enabled;
+        }
+        return false;
+    }
+
+    bool IsRockImageEnabled()
+    {
+        if (justRockImage != null)
+        {
+            return justRockImage.enabled;
+        }
+        return false;
     }
 }

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CheckOb : MonoBehaviour
 {
     private GameManage gameManage;
     public Transform ropeTransform;
+    public Image passImage;
+    public Image justRockImage;
 
     void Start()
     {
@@ -20,6 +23,22 @@ public class CheckOb : MonoBehaviour
         {
             ropeTransform = transform;
         }
+
+      
+        if (passImage == null)
+        {
+            Debug.LogError("passImage Image component not found on this GameObject.");
+            
+        }
+        
+
+
+        if (justRockImage == null)
+        {
+            Debug.LogError("justRockImage Image component not found on this GameObject.");
+            
+        }
+        
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -29,10 +48,12 @@ public class CheckOb : MonoBehaviour
                 other.transform.parent = transform;
                 gameManage.GetState = State.Shorten;
                 transform.GetComponent<Collider2D>().enabled = false;
+                passImage.enabled = false;
             } else if (other.CompareTag("student")) {
                 other.transform.parent = transform;
                 gameManage.GetState = State.Shorten;
                 transform.GetComponent<Collider2D>().enabled = false;
+                justRockImage.enabled = false;
             }
         }
     }
