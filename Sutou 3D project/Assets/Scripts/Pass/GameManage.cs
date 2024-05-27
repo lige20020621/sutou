@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum State
 {
@@ -17,7 +18,9 @@ public class GameManage : MonoBehaviour
     public Image handler;
     public Image passImage;
     public Image justRockImage;
+    public Image allPassImage;
     public List<Transform> studentImages;
+    public GameObject homeButton;
     private float length;
     private bool isRotating = true;
 
@@ -30,8 +33,9 @@ public class GameManage : MonoBehaviour
     {
         state = State.Rock;
         dir = Vector3.back;
-       
         length = 1;
+        homeButton.SetActive(false);
+        allPassImage.enabled = false;
     }
 
 
@@ -40,7 +44,7 @@ public class GameManage : MonoBehaviour
         if (state == State.Rock)
         {
             if(isRotating) Rock();
-            if (Input.GetMouseButtonDown(0)) state = State.Stretch;
+            if (Input.GetMouseButtonDown(0) && isRotating) state = State.Stretch;
         }
         else if (state == State.Shorten)
         {
@@ -92,6 +96,8 @@ public class GameManage : MonoBehaviour
             if(studentImages.Count == 0)
             {
                 isRotating = false;
+                homeButton.SetActive(true);
+                allPassImage.enabled = true;
                 Debug.Log("no student");
             }
             return; 
@@ -117,5 +123,10 @@ public class GameManage : MonoBehaviour
             return justRockImage.enabled;
         }
         return false;
+    }
+
+    public void SwitchToHome()
+    {
+        SceneManager.LoadScene("Home");
     }
 }
