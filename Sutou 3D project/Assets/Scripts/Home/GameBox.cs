@@ -10,4 +10,14 @@ public class GameBox : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+
+    public void SwitchScene4()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+       public void SwitchScene5()
+    {
+        SceneManager.LoadScene(5);
+    }
 }
