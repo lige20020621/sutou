@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 direction = Vector3.up * jumpForce;
+                Audio.soundMan.Play_sk_1_Sound();
             }
         }
 
