@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class GameBox : MonoBehaviour
 {
+    private GameStateManager gameStateManager;
+
+    void Start()
+    {
+        gameStateManager = FindObjectOfType<GameStateManager>();
+        gameStateManager.LoadGameState(); // Load the game state when the player is initialized
+        gameStateManager.UpdateScoreText();
+    }
     public void SwitchScene2()
     {
         SceneManager.LoadScene(2);
@@ -16,8 +24,15 @@ public class GameBox : MonoBehaviour
         SceneManager.LoadScene(4);
     }
 
-       public void SwitchScene5()
+    public void SwitchScene5()
     {
         SceneManager.LoadScene(5);
+    }
+
+    public void OnClickSutou()
+    {
+        gameStateManager.score += 1;
+        gameStateManager.SaveGameState();
+        gameStateManager.UpdateScoreText(); 
     }
 }
