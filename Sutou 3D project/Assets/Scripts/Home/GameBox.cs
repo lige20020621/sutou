@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameBox : MonoBehaviour
 {
+    int a;
     private GameStateManager gameStateManager;
-
+    public Animator myAnimator;
     void Start()
-    {   
+    { 
         gameStateManager = FindObjectOfType<GameStateManager>();
         gameStateManager.LoadGameState(); // Load the game state when the player is initialized
         gameStateManager.UpdateScoreText();
@@ -36,12 +37,32 @@ public class GameBox : MonoBehaviour
         SceneManager.LoadScene(5);
     }
 
+    public void SwitchScene6()
+    { 
+        SceneManager.LoadScene(6);
+    }
+    public void SwitchScene7()
+    {
+        SceneManager.LoadScene(7);
+    }
+
+
     public void OnClickSutou()
     {
        updateScore(1);
-        if(gameStateManager.score >= 100) {
+        if (gameStateManager.score >= 100)
+        {
             gameStateManager.score = 0;
             SceneManager.LoadScene(8);
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            myAnimator.SetBool("Sulike", true);
+        }
+        if (!Input.GetMouseButton(0))
+        {
+            myAnimator.SetBool("Sulike", false);
         }
     }
 
@@ -53,9 +74,7 @@ public class GameBox : MonoBehaviour
 
     private void resetScore() {
         gameStateManager.score = 0;
-        gameStateManager.SaveGameState(); 
+        gameStateManager.SaveGameState();
     }
-
-    void Update()
-    {}
+    
 }

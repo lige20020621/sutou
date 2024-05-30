@@ -8,6 +8,8 @@ public class Audio : MonoBehaviour
     private AudioSource audioSrc;
 
     public AudioClip sk_1_Sound;
+    public AudioClip sk_2_Sound;
+  
 
 
     // Start is called before the first frame update
@@ -29,4 +31,10 @@ public class Audio : MonoBehaviour
         audioSrc.Stop();
         audioSrc.PlayOneShot(sk_1_Sound);
     }
+    public void Play_sk_2_Sound()
+    {
+        audioSrc.Stop();
+        audioSrc.PlayOneShot(sk_2_Sound);
+    }
+    
 }
