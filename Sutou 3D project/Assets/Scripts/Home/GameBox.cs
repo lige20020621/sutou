@@ -57,6 +57,7 @@ public class GameBox : MonoBehaviour
             SceneManager.LoadScene(8);
         } else {
             playButton.SetActive(false);
+            myAnimator.SetBool("sutou1", false);
             myAnimator.SetBool("Sulike", true);
         }
     }
