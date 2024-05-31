@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
+
+
     int count = 0;
     public float moveDistance = 50f; // Distance to move up
     private Vector3 originalPosition; // Store the original position of the GameObject
@@ -23,12 +25,20 @@ public class Button : MonoBehaviour
 
     public void SwitchScene3()
     {
-        if(count < 3) {
+        if (count < 3)
+        {
             transform.Translate(Vector3.up * moveDistance);
             count++;
-        } else {
+        }
+        else
+        {
             count = 0;
             SceneManager.LoadScene(3);
         }
+    }
+
+    public void OnMouseUp()
+    {
+        Audio.soundMan.Play_sk_1_Sound();
     }
 }

@@ -45,6 +45,7 @@ public class GameManage : MonoBehaviour
         {
             if(isRotating) Rock();
             if (Input.GetMouseButtonDown(0) && isRotating) state = State.Stretch;
+            Audio.soundMan.Play_sk_2_Sound();
         }
         else if (state == State.Shorten)
         {
