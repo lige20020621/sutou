@@ -24,11 +24,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Move.unity
     guid: 2fdd5ef678312754a870e5920b81692c
   - enabled: 1
-    path: Assets/Scenes/Dress.unity
-    guid: 64453bd1c8bb5bb459f557792baf7778
-  - enabled: 1
     path: Assets/Scenes/Setting.unity
     guid: 4bf32ffae60cc6a4ea0cc0b87a4fe049
+  - enabled: 1
+    path: Assets/Scenes/Dress.unity
+    guid: 64453bd1c8bb5bb459f557792baf7778
   - enabled: 1
     path: Assets/Scenes/End02.unity
     guid: 5f63473595fb0a846b2a17f9778df004

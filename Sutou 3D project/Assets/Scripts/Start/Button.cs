@@ -11,11 +11,14 @@ public class Button : MonoBehaviour
     int count = 0;
     public float moveDistance = 50f; // Distance to move up
     private Vector3 originalPosition; // Store the original position of the GameObject
+    private GameStateManager gameStateManager;
 
     void Start()
     {
         // Store the original position
         originalPosition = transform.position;
+        gameStateManager = FindObjectOfType<GameStateManager>();
+        gameStateManager.InitializedState();
     }
 
     public void SwitchScene1()
