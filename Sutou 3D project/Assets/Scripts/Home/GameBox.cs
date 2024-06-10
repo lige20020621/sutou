@@ -10,16 +10,21 @@ public class GameBox : MonoBehaviour
     private GameStateManager gameStateManager;
     public Animator myAnimator;
     public GameObject playButton;
+    public GameObject redbullAnimation;
+    public GameObject normalAnimation;
 
     void Start()
     { 
+        Debug.Log("Start GameBox");
         gameStateManager = FindObjectOfType<GameStateManager>();
         gameStateManager.LoadGameState(); // Load the game state when the player is initialized
         gameStateManager.UpdateScoreText();
-         if(gameStateManager.score >= 100) {
+        if(gameStateManager.score >= 100) {
             resetScore();
             SceneManager.LoadScene(8);
         }
+        Debug.Log(gameStateManager.dressNumber);
+        gameStateManager.UpdateDress();
     }
     public void SwitchScene2()
     {
@@ -50,13 +55,14 @@ public class GameBox : MonoBehaviour
 
     public void OnClickSutou()
     {
+        Debug.Log("OnClickSutou");
         updateScore(1);
         if (gameStateManager.score >= 100)
         {
             gameStateManager.score = 0;
             SceneManager.LoadScene(8);
         } else {
-            playButton.SetActive(false);
+            // playButton.SetActive(false);
             myAnimator.SetBool("Sulike", true);
         }
     }
@@ -79,11 +85,12 @@ public class GameBox : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Update");
         AnimatorStateInfo stateInfo = myAnimator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName("sulike") && stateInfo.normalizedTime >= 1.0f)
         {
             myAnimator.SetBool("Sulike", false);
-            playButton.SetActive(true);
+            // playButton.SetActive(true);
         }
     }
     

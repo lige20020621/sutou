@@ -81,7 +81,6 @@ public class GameManage : MonoBehaviour
             if(handler.transform.childCount > 0) {
                 Transform firstChildTransform = handler.transform.GetChild(0);
                 if(firstChildTransform.CompareTag("student")) {
-                    Debug.Log("it is a rock");
                     studentImages.Remove(firstChildTransform);
                 }
                 Destroy(firstChildTransform.gameObject);
@@ -99,7 +98,6 @@ public class GameManage : MonoBehaviour
                 isRotating = false;
                 homeButton.SetActive(true);
                 allPassImage.enabled = true;
-                Debug.Log("no student");
             }
             return; 
         }
