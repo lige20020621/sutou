@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 240285674}
   - component: {fileID: 240285673}
   - component: {fileID: 240285672}
+  - component: {fileID: 240285675}
   m_Layer: 5
   m_Name: ButtonChange
   m_TagString: Untagged
@@ -204,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 240285673}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 240285675}
+        m_TargetAssemblyTypeName: Scence, Assembly-CSharp
+        m_MethodName: ChangeDress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &240285673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +256,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240285670}
   m_CullTransparentMesh: 1
+--- !u!114 &240285675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240285670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d465bcf7fe6254691f7c5975ce5f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &277282094
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +701,7 @@ GameObject:
   - component: {fileID: 1440064417}
   - component: {fileID: 1440064416}
   - component: {fileID: 1440064415}
+  - component: {fileID: 1440064419}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -765,6 +791,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1440064419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440064414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac661f5b2118c4fb5b2981ae5da83f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  scoreText: {fileID: 0}
+  redbullAnimation: {fileID: 0}
+  normalAnimation: {fileID: 0}
+  dressNumber: 0
 --- !u!1 &1988107824
 GameObject:
   m_ObjectHideFlags: 0
