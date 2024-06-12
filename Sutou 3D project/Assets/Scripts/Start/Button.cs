@@ -26,6 +26,11 @@ public class Button : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+     public void SwitchScene10()
+    {
+        SceneManager.LoadScene(10);
+    }
+
     public void SwitchScene3()
     {
         if (count < 3)
