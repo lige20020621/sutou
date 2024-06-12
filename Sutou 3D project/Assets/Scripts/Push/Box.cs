@@ -8,12 +8,16 @@ public class Box : MonoBehaviour
 {
     public GameObject pushOkOne;
     public GameObject pushOkTwo;
-    private bool isPushable = true;
+    public GameObject clearImage;
+    public GameObject home;
+    public bool isPushable = true;
     private void Start() 
     {
         FindObjectOfType<PushGameManager>().totalBoxes++;
         pushOkOne.SetActive(false);
         pushOkTwo.SetActive(false);
+        clearImage.SetActive(false);
+        home.SetActive(false);
     }
     public bool CanMoveToDir(Vector2 dir)
     {
@@ -47,7 +51,12 @@ public class Box : MonoBehaviour
             }
             isPushable = false; // Disable pushing
             FindObjectOfType<PushGameManager>().finishedBoxes++;
-            FindObjectOfType<PushGameManager>().CheckFinish();
+            bool isClear =  FindObjectOfType<PushGameManager>().CheckFinish();
+            if(isClear)
+            {
+                 clearImage.SetActive(true);
+                 home.SetActive(true);
+            }
         }
     }
 }

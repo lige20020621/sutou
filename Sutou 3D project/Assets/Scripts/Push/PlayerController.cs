@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         
         if(moveDir != Vector2.zero)
         {
-            if(CanMoveToDir(moveDir))
+            if(CanMoveToDir(moveDir) && !FindObjectOfType<PushGameManager>().CheckFinish())
             {
                 Move(moveDir);
             }

@@ -53,6 +53,13 @@ public class GameBox : MonoBehaviour
         SceneManager.LoadScene(7);
     }
 
+    public void SwitchScene9()
+    {
+        updateScore(20);
+        SceneManager.LoadScene(9);
+    }
+
+
     public void OnClickSutou()
     {
         Debug.Log("OnClickSutou");
