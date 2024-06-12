@@ -15,7 +15,6 @@ public class GameBox : MonoBehaviour
 
     void Start()
     { 
-        Debug.Log("Start GameBox");
         gameStateManager = FindObjectOfType<GameStateManager>();
         gameStateManager.LoadGameState(); // Load the game state when the player is initialized
         gameStateManager.UpdateScoreText();
@@ -23,7 +22,7 @@ public class GameBox : MonoBehaviour
             resetScore();
             SceneManager.LoadScene(8);
         }
-        Debug.Log(gameStateManager.dressNumber);
+
         gameStateManager.UpdateDress();
     }
     public void SwitchScene2()
@@ -62,7 +61,6 @@ public class GameBox : MonoBehaviour
 
     public void OnClickSutou()
     {
-        Debug.Log("OnClickSutou");
         updateScore(1);
         if (gameStateManager.score >= 100)
         {
@@ -92,7 +90,6 @@ public class GameBox : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Update");
         AnimatorStateInfo stateInfo = myAnimator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName("sulike") && stateInfo.normalizedTime >= 1.0f)
         {

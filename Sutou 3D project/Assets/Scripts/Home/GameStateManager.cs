@@ -69,7 +69,6 @@ public class GameStateManager : MonoBehaviour
     // Method to save the game state
     public void SaveDressState()
     {
-        Debug.Log("SaveDressState");
         PlayerPrefs.SetInt("dressNumber", dressNumber);
         PlayerPrefs.Save();
     }

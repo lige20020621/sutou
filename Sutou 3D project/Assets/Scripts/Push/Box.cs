@@ -39,7 +39,6 @@ public class Box : MonoBehaviour
     {
         if(collision.CompareTag("target"))
         {
-            Debug.Log("inside target");
             string collidedObjectName = collision.gameObject.name;
             if(collidedObjectName == "targetOne")
             {

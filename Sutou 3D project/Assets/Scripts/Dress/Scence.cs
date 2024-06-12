@@ -10,7 +10,6 @@ public class Scence : MonoBehaviour
 
     void Start()
     { 
-        Debug.Log("Start Scence");
         gameStateManager = FindObjectOfType<GameStateManager>();
         gameStateManager.LoadGameState(); 
     }
@@ -20,7 +19,6 @@ public class Scence : MonoBehaviour
     }
 
     public void ChangeDress() {
-        Debug.Log("ChangeDress");
         gameStateManager.dressNumber = 1;
         gameStateManager.SaveDressState();
     }

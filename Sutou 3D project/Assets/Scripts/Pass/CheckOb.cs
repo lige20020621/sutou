@@ -28,7 +28,6 @@ public class CheckOb : MonoBehaviour
         if (passImage == null)
         {
             Debug.LogError("passImage Image component not found on this GameObject.");
-            
         }
         
 
@@ -36,7 +35,6 @@ public class CheckOb : MonoBehaviour
         if (justRockImage == null)
         {
             Debug.LogError("justRockImage Image component not found on this GameObject.");
-            
         }
         
     }
